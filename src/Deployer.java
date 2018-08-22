@@ -89,6 +89,7 @@ public class Deployer {
         cm.close();
         cm.open("Warning");
         cm.cont("Run Configer to setup sm1 and sm2!");
+        cm.cont("Bye-bye!");
         cm.close();
         gc.save();
         //cm.open("Information");
