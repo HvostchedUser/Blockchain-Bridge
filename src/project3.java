@@ -154,6 +154,7 @@ public class project3 {
                             cm.cont("Transaction hash",rm1.txHash);
                             cm.cont("Sending the message...");
                             cm.cont("Transaction receipt",sm1.PassMesage(rm1.addr,rm1.data,hexStringToByteArray(rm1.txHash)).send());
+                            cm.close();
                         }
                     }catch (Exception e){
                         e.printStackTrace();
