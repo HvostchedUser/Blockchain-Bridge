@@ -78,7 +78,7 @@ public class project3 {
                 }
                 int rtpVRS1l= 0;
                 try {
-                    rtpVRS1l = updateEvents1rtpVRS(web3c,sm1,sm1.getContractAddress()).size()-1;
+                    rtpVRS1l = updateEvents1rtpVRS(web3c,sm1,sm1.getContractAddress()).size();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
