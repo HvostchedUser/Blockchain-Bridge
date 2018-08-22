@@ -74,6 +74,10 @@ public class TokenConfig {
                 cm.cont("Transaction receipt",tokenin.setPermitionToBurn(st).send());
                 cm.cont("OK!");
             }
+            if(st.equals("")){
+                cm.cont("Quitting...");
+                cm.cont("Bye-bye!");
+            }
         }
 
     }
