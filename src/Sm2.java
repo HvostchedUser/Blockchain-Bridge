@@ -97,16 +97,16 @@ public class Sm2 extends Contract {
 
     public RemoteCall<TransactionReceipt> PassSignatureFromCheap(String _to, byte[] _data, byte[] _trhhash, List<BigInteger> _v, List<byte[]> _r, List<byte[]> _s) {
         final Function function = new Function(
-                FUNC_PASSSIGNATUREFROMCHEAP, 
+                FUNC_PASSSIGNATUREFROMCHEAP,
                 Arrays.<Type>asList(new Address(_to),
                 new DynamicBytes(_data),
-                new org.web3j.abi.datatypes.generated.Bytes32(_trhhash), 
+                new org.web3j.abi.datatypes.generated.Bytes32(_trhhash),
                 new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.generated.Uint8>(
-                        org.web3j.abi.Utils.typeMap(_v, org.web3j.abi.datatypes.generated.Uint8.class)), 
+                        org.web3j.abi.Utils.typeMap(_v, org.web3j.abi.datatypes.generated.Uint8.class)),
                 new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.generated.Bytes32>(
-                        org.web3j.abi.Utils.typeMap(_r, org.web3j.abi.datatypes.generated.Bytes32.class)), 
+                        org.web3j.abi.Utils.typeMap(_r, org.web3j.abi.datatypes.generated.Bytes32.class)),
                 new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.generated.Bytes32>(
-                        org.web3j.abi.Utils.typeMap(_s, org.web3j.abi.datatypes.generated.Bytes32.class))), 
+                        org.web3j.abi.Utils.typeMap(_s, org.web3j.abi.datatypes.generated.Bytes32.class))),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
