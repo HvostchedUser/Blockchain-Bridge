@@ -53,7 +53,8 @@ public class TokenConfig {
         cm.close();
         cm.open("Tips");
         cm.cont("Write \"allowToMint\" to add a minter or");
-        cm.cont("\"allowToBurn\" to add a burner.");
+        cm.cont("\"allowToBurn\" to add a burner or");
+        cm.cont("\"allowToSpend\" to allow someone to spend your money.");
         cm.close();
         cm.open("Console");
         Scanner s=new Scanner(System.in);
@@ -66,6 +67,7 @@ public class TokenConfig {
                 cm.cont("Transacting...");
                 cm.cont("Transaction receipt",tokenin.setPermitionToMint(st).send());
                 cm.cont("OK!");
+                st="nothing";
             }
             if(st.equals("allowToBurn")){
                 cm.cont("Write an address of a new burner.");
@@ -73,10 +75,22 @@ public class TokenConfig {
                 cm.cont("Transacting...");
                 cm.cont("Transaction receipt",tokenin.setPermitionToBurn(st).send());
                 cm.cont("OK!");
+                st="nothing";
+            }
+            if(st.equals("allowToSpend")){
+                cm.cont("Write an address of a spender.");
+                st=s.nextLine();
+                cm.cont("How much tokens?");
+                BigInteger bi=s.nextBigInteger();
+                cm.cont("Transacting...");
+                cm.cont("Transaction receipt",tokenin.approve(st,bi).send());
+                cm.cont("OK!");
+                st="nothing";
             }
             if(st.equals("")){
                 cm.cont("Quitting...");
                 cm.cont("Bye-bye!");
+                return;
             }
         }
 
