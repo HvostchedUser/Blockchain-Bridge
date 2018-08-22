@@ -101,7 +101,7 @@ public class TokenConfig {
                 st="nothing";
             }
             if(st.equals("tokesAllowToSpend")){
-                cm.cont("Write an address of a spender int tokes.");
+                cm.cont("Write an address of a spender in tokes.");
                 st=s.nextLine();
                 cm.cont("How much tokens?");
                 BigInteger bi=s.nextBigInteger();
