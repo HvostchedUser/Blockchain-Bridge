@@ -88,8 +88,8 @@ public class TokenConfig {
                 st="nothing";
             }
             if(st.equals("")){
-                cm.cont("Quitting...");
                 cm.cont("Bye-bye!");
+                cm.close();
                 return;
             }
         }
