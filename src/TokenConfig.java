@@ -53,7 +53,7 @@ public class TokenConfig {
         cm.close();
         cm.open("Tips");
         cm.cont("Write \"allowToMint\" to add a minter or");
-        cm.cont("\"allowToBurn\" to add a burner or");
+        cm.cont("\"allowToBurn\" to add a burner.");
         cm.close();
         cm.open("Console");
         Scanner s=new Scanner(System.in);
