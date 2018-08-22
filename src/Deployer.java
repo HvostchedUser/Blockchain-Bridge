@@ -48,8 +48,8 @@ public class Deployer {
         cm.close();
         cm.open("Deploy");
         cm.cont("Deployment begins!");
-        cm.cont("Deploying cheap...(1/4)");
-        Cheap cheap = Cheap.deploy(web3c,credentials,big(10),big(2000000)).send();
+        cm.cont("Deploying Tokes...(1/4)");
+        Tokes cheap = Tokes.deploy(web3c,credentials,big(10),big(2000000)).send();
         cm.cont("cheap address",cheap.getContractAddress());
         cm.cont("Deploying sm1...(2/4)");
         List<String> validators1=new ArrayList<>();
@@ -61,8 +61,8 @@ public class Deployer {
         validators2.add("0x7b4b4d811cb805f936854bf9ea30e6b3b69ddb11");
         Sm2 sm2 = Sm2.deploy(web3e,credentials,big(10),big(2000000),validators2,big(1)).send();
         cm.cont("sm2 address",sm2.getContractAddress());
-        cm.cont("Deploying eth...(4/4)");
-        Eth eth = Eth.deploy(web3e,credentials,big(10),big(2000000)).send();
+        cm.cont("Deploying Tokenin...(4/4)");
+        Tokenin eth = Tokenin.deploy(web3e,credentials,big(10),big(2000000)).send();
         cm.cont("eth address",eth.getContractAddress());
         cm.cont("OK!");
         cm.close();
