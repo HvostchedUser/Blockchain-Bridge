@@ -91,9 +91,9 @@ public class Deployer {
         cm.cont("Run Configer to setup sm1 and sm2!");
         cm.close();
         gc.save();
-        cm.open("Information");
-        cm.cont("Running the firstRun program...");
-        cm.close();
+        //cm.open("Information");
+        //cm.cont("Running the firstRun program...");
+        //cm.close();
         //firstRun.main(new String []{});
 
     }
