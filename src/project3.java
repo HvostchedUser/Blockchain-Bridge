@@ -53,14 +53,14 @@ public class project3 {
         cm.cont("Loading the wallet...");
         Credentials credentials = Credentials.create(privkey,pubkey);
 
-        cm.cont("Loading smart contract interfaces...(1/4)");
+        cm.cont("Loading smart contract interfaces...(1/2)");
         Sm1 sm1= Sm1.load(sm1addr,web3c,credentials,big(10),big(8000000));
-        cm.cont("Loading smart contract interfaces...(2/4)");
+        cm.cont("Loading smart contract interfaces...(2/2)");
         Sm2 sm2= Sm2.load(sm2addr,web3e,credentials,big(10),big(8000000));
-        cm.cont("Loading smart contract interfaces...(3/4)");
-        Cheap cheap= Cheap.load(cheapaddr,web3c,credentials,big(10),big(8000000));
-        cm.cont("Loading smart contract interfaces...(4/4)");
-        Eth eth= Eth.load(ethaddr,web3e,credentials,big(10),big(8000000));
+        //cm.cont("Loading smart contract interfaces...(3/4)");
+        //Cheap cheap= Cheap.load(cheapaddr,web3c,credentials,big(10),big(8000000));
+        //cm.cont("Loading smart contract interfaces...(4/4)");
+        //Eth eth= Eth.load(ethaddr,web3e,credentials,big(10),big(8000000));
         cm.close();
         cm.open("Check");
         //int oldl=updateEvents(web3,sm1,sm1addr).size()-1;
@@ -132,7 +132,7 @@ public class project3 {
         Thread sm2tosm1=new Thread(new Runnable() {
             @Override
             public void run() {
-                cm.cont("Checking the listener of expensivenet...");
+                cm.cont("Checking the listener of expensivenet events...");
                 int rtpm1l= 0;
                 try {
                     rtpm1l = updateEvents1rtpm(web3c,sm1,sm1.getContractAddress()).size();
