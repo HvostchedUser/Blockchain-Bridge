@@ -134,8 +134,12 @@ public class project3 {
             public void run() {
                 cm.cont("Checking the listener of expensivenet events...");
                 int rtpm1l= 0;
+                int faill=0;
+                int goodl=0;
                 try {
-                    rtpm1l = updateEvents1rtpm(web3c,sm1,sm1.getContractAddress()).size();
+                    goodl=updateEvents1good(web3c,sm1,sm1.getContractAddress()).size();
+                    faill=updateEvents1fail(web3c,sm1,sm1.getContractAddress()).size();
+                    rtpm1l = updateEvents2rtpm(web3c,sm2,sm2.getContractAddress()).size();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -143,6 +147,24 @@ public class project3 {
                 while(true){
                     try {
                         List<RTPMSM1> pasMes1 = updateEvents2rtpm(web3e, sm2, sm2.getContractAddress());
+                        List<Sm1.MessagePassFailEventResponse> err=updateEvents1fail(web3c,sm1,sm1.getContractAddress());
+                        List<Sm1.MessageSucessfulPassedEventResponse> good=updateEvents1good(web3c,sm1,sm1.getContractAddress());
+                        if(err.size()>faill){
+                            faill=err.size();
+                            cm.open("Error response");
+                            cm.cont("Error by sm1: cannot send message!");
+                            cm.cont("_to",err.get(err.size()-1).to);
+                            cm.cont("_data",err.get(err.size()-1).data);
+                            cm.close();
+                        }
+                        if(good.size()>goodl){
+                            goodl=good.size();
+                            cm.open("Success event response");
+                            cm.cont("Error by sm1: message successfully sent!");
+                            cm.cont("_to",good.get(err.size()-1).to);
+                            cm.cont("_data",good.get(err.size()-1).data);
+                            cm.close();
+                        }
                         if (pasMes1.size() > rtpm1l) {
                             cm.open("Event response");
                             cm.cont("Got event from SM2, request to pass the message.");
@@ -169,6 +191,42 @@ public class project3 {
 
         cm.close();
     }
+
+    private static List<Sm1.MessageSucessfulPassedEventResponse> updateEvents1good(Web3j web3, Sm1 sm1, String sm1addr) throws IOException { //String sm1addr=sm1.getContractAddress();
+        EthFilter filter = new EthFilter(DefaultBlockParameterName.EARLIEST, DefaultBlockParameterName.LATEST, sm1addr);
+        List<Sm1.MessageSucessfulPassedEventResponse> data=new ArrayList<>();
+        List<EthLog.LogResult> logRes=web3.ethGetLogs(filter).send().getLogs();
+        for (EthLog.LogResult t:logRes) {
+            String txHash=getTXHash(t.toString());
+            TransactionReceipt tr=web3.ethGetTransactionReceipt(txHash).send().getTransactionReceipt().get();
+            List<Sm1.MessageSucessfulPassedEventResponse> evs=sm1.getMessageSucessfulPassedEvents(tr);
+            for (Sm1.MessageSucessfulPassedEventResponse te:
+                    evs) {
+                data.add(te);
+            }
+            //System.out.println(tr.toString());
+        }
+        return data;
+    }
+
+    private static List<Sm1.MessagePassFailEventResponse> updateEvents1fail(Web3j web3, Sm1 sm1, String sm1addr) throws IOException {
+        //String sm1addr=sm1.getContractAddress();
+        EthFilter filter = new EthFilter(DefaultBlockParameterName.EARLIEST, DefaultBlockParameterName.LATEST, sm1addr);
+        List<Sm1.MessagePassFailEventResponse> data=new ArrayList<>();
+        List<EthLog.LogResult> logRes=web3.ethGetLogs(filter).send().getLogs();
+        for (EthLog.LogResult t:logRes) {
+            String txHash=getTXHash(t.toString());
+            TransactionReceipt tr=web3.ethGetTransactionReceipt(txHash).send().getTransactionReceipt().get();
+            List<Sm1.MessagePassFailEventResponse> evs=sm1.getMessagePassFailEvents(tr);
+            for (Sm1.MessagePassFailEventResponse te:
+                    evs) {
+                data.add(te);
+            }
+            //System.out.println(tr.toString());
+        }
+        return data;
+    }
+
     private static List<RTPVRSSM1> updateEvents1rtpVRS(Web3j web3, Sm1 sm1, String sm1addr) throws IOException {
         //String sm1addr=sm1.getContractAddress();
         EthFilter filter = new EthFilter(DefaultBlockParameterName.EARLIEST, DefaultBlockParameterName.LATEST, sm1addr);
