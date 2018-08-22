@@ -1,6 +1,3 @@
-import com.company.GlobalConf;
-import com.company.Sm1;
-import com.company.Sm2;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.ECKeyPair;
 import org.web3j.protocol.Web3j;

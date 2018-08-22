@@ -68,7 +68,7 @@ public class Deployer {
         Aux1 aux1= Aux1.deploy(web3c,credentials,big(10),big(2000000)).send();
         cm.cont("Aux1 address",aux1.getContractAddress());
         cm.cont("Deploying Aux2...(6/6)");
-        Aux2 aux2= Aux2.deploy(web3c,credentials,big(10),big(2000000)).send();
+        Aux2 aux2= Aux2.deploy(web3e,credentials,big(10),big(2000000)).send();
         cm.cont("Aux2 address",aux2.getContractAddress());
         cm.cont("OK!");
         cm.close();
