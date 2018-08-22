@@ -4,14 +4,14 @@ import org.web3j.protocol.Web3j;
 import org.web3j.protocol.http.HttpService;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.math.BigInteger;
+import java.util.Scanner;
 
 /**
  * Created by ivan on 22.08.18.
  */
 public class TokenConfig {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws Exception {
         ConsoleMessager cm=new ConsoleMessager();
         cm.open("Loading");
         cm.cont("Reading the configuration file...");
@@ -47,8 +47,34 @@ public class TokenConfig {
         cm.cont("Ready!");
         cm.close();
 
-
+        cm.open("Loading");
+        cm.cont("Loading tokenin...");
         Tokenin tokenin = Tokenin.load(gc.get("tokeninaddr"),web3c,credentials,big(10),big(2000000));
+        cm.close();
+        cm.open("Tips");
+        cm.cont("Write \"allowToMint\" to add a minter or");
+        cm.cont("\"allowToBurn\" to add a burner or");
+        cm.close();
+        cm.open("Console");
+        Scanner s=new Scanner(System.in);
+        while(true){
+            cm.cont("Ready!");
+            String st=s.nextLine();
+            if(st.equals("allowToMint")){
+                cm.cont("Write an address of a new minter.");
+                st=s.nextLine();
+                cm.cont("Transacting...");
+                cm.cont("Transaction receipt",tokenin.setPermitionToMint(st).send());
+                cm.cont("OK!");
+            }
+            if(st.equals("allowToBurn")){
+                cm.cont("Write an address of a new burner.");
+                st=s.nextLine();
+                cm.cont("Transacting...");
+                cm.cont("Transaction receipt",tokenin.setPermitionToBurn(st).send());
+                cm.cont("OK!");
+            }
+        }
 
     }
 
