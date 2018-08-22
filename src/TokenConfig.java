@@ -50,13 +50,16 @@ public class TokenConfig {
         cm.open("Loading");
         cm.cont("Loading tokenin...");
         Tokenin tokenin = Tokenin.load(gc.get("tokeninaddr"),web3c,credentials,big(10),big(2000000));
+        cm.cont("Loading tokes...");
+        Tokes tokes = Tokes.load(gc.get("tokesaddr"),web3e,credentials,big(10),big(2000000));
         cm.close();
         cm.open("Tips");
         cm.cont("Write \"allowToMint\" to add a minter or");
         cm.cont("\"allowToBurn\" to add a burner or");
         cm.cont("\"adminize\" to add a burner and a minter or");
         cm.cont("\"quit\" to exit or");
-        cm.cont("\"allowToSpend\" to allow someone to spend your money.");
+        cm.cont("\"tokesAllowToSpend\" to allow someone to spend your money in tokes.");
+        cm.cont("\"tokeninAllowToSpend\" to allow someone to spend your money in tokenin.");
         cm.close();
         cm.open("Console");
         Scanner s=new Scanner(System.in);
@@ -87,13 +90,23 @@ public class TokenConfig {
                 cm.cont("OK!");
                 st="nothing";
             }
-            if(st.equals("allowToSpend")){
-                cm.cont("Write an address of a spender.");
+            if(st.equals("tokeninAllowToSpend")){
+                cm.cont("Write an address of a spender int tokenin.");
                 st=s.nextLine();
                 cm.cont("How much tokens?");
                 BigInteger bi=s.nextBigInteger();
                 cm.cont("Transacting...");
                 cm.cont("Transaction receipt",tokenin.approve(st,bi).send());
+                cm.cont("OK!");
+                st="nothing";
+            }
+            if(st.equals("tokesAllowToSpend")){
+                cm.cont("Write an address of a spender int tokes.");
+                st=s.nextLine();
+                cm.cont("How much tokens?");
+                BigInteger bi=s.nextBigInteger();
+                cm.cont("Transacting...");
+                cm.cont("Transaction receipt",tokes.approve(st,bi).send());
                 cm.cont("OK!");
                 st="nothing";
             }
