@@ -161,8 +161,8 @@ public class project3 {
                             goodl=good.size();
                             cm.open("Success event response");
                             cm.cont("Error by sm1: message successfully sent!");
-                            cm.cont("_to",good.get(err.size()-1).to);
-                            cm.cont("_data",good.get(err.size()-1).data);
+                            cm.cont("_to",good.get(good.size()-1).to);
+                            cm.cont("_data",good.get(good.size()-1).data);
                             cm.close();
                         }
                         if (pasMes1.size() > rtpm1l) {
