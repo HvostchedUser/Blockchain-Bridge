@@ -75,7 +75,7 @@ public class firstRun {
         cm.cont("Aux1 knows where sm1 is! Transaction receipt",aux1.setSm1(gc.get("sm1addr")).send());
         cm.cont("Aux1 knows where tokenins are stored! Transaction receipt",aux1.setErc20(gc.get("tokeninaddr")).send());
         cm.cont("Aux1 has found his brother, Aux2! Transaction receipt",aux1.setAux(gc.get("aux2addr")).send());
-        cm.cont("Everything is ok, bye!");
+        cm.cont("Looks like everything is ok, bye!");
         cm.close();
 
     }
