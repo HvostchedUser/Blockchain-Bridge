@@ -44,6 +44,7 @@ public class Deployer {
 
         cm.cont("Loading the wallet...");
         Credentials credentials = Credentials.create(privkey,pubkey);
+        cm.cont("My address",credentials.getAddress());
         cm.cont("Ready!");
         cm.close();
         cm.open("Deploy");
