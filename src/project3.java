@@ -78,7 +78,7 @@ public class project3 {
                 }
                 int rtpVRS1l= 0;
                 try {
-                    rtpVRS1l = updateEvents1rtpVRS(web3c,sm1,sm1.getContractAddress()).size();
+                    rtpVRS1l = updateEvents1rtpVRS(web3c,sm1,sm1.getContractAddress()).size()-1;
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -116,9 +116,9 @@ public class project3 {
                             cm.cont("Address",rvrs1.addr);
                             cm.cont("Data",rvrs1.data);
                             cm.cont("Transaction hash",rvrs1.rttrhash);
-                            cm.cont("V",rvrs1.v);
-                            cm.cont("R",rvrs1.r);
-                            cm.cont("S",rvrs1.s);
+                            cm.cont("V",(rvrs1.v));
+                            cm.cont("R",(rvrs1.r));
+                            cm.cont("S",(rvrs1.s));
                             cm.cont("Sending the signature...");
                             cm.cont("Transaction receipt",sm2.PassSignatureFromCheap(rvrs1.addr, rvrs1.data, rvrs1.rttrhash, rvrs1.v, rvrs1.r, rvrs1.s).send());
                             cm.close();

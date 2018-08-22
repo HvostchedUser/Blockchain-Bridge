@@ -111,14 +111,14 @@ public class Sm2 extends Contract {
         return executeRemoteCallTransaction(function);
     }
 
-    public static RemoteCall<Sm2> deploy(Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit, List<String> volidators, BigInteger _num) {
+    public static RemoteCall<Sm2> deploy(Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit, List volidators, BigInteger _num) {
         String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new org.web3j.abi.datatypes.DynamicArray<Address>(
                         org.web3j.abi.Utils.typeMap(volidators, Address.class)),
                 new org.web3j.abi.datatypes.generated.Uint256(_num)));
         return deployRemoteCall(Sm2.class, web3j, credentials, gasPrice, gasLimit, BINARY, encodedConstructor);
     }
 
-    public static RemoteCall<Sm2> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit, List<String> volidators, BigInteger _num) {
+    public static RemoteCall<Sm2> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit, List volidators, BigInteger _num) {
         String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new org.web3j.abi.datatypes.DynamicArray<Address>(
                         org.web3j.abi.Utils.typeMap(volidators, Address.class)),
                 new org.web3j.abi.datatypes.generated.Uint256(_num)));
