@@ -50,7 +50,7 @@ public class Deployer {
         cm.open("Deploy");
         cm.cont("Deployment begins!");
         cm.cont("Deploying Tokes to expensivenet...(1/6)");
-        Tokes tokes = Tokes.deploy(web3e,credentials,big(10),big(2000000),big(1000)).send();
+        Tokes tokes = Tokes.deploy(web3e,credentials,big(10),big(2000000),big(1000000)).send();
         cm.cont("Tokes address",tokes.getContractAddress());
         cm.cont("Deploying sm1 to cheapnet...(2/6)");
         List<String> validators1=new ArrayList<>();
