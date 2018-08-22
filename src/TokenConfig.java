@@ -54,12 +54,12 @@ public class TokenConfig {
         cm.open("Tips");
         cm.cont("Write \"allowToMint\" to add a minter or");
         cm.cont("\"allowToBurn\" to add a burner or");
+        cm.cont("\"quit\" to exit or");
         cm.cont("\"allowToSpend\" to allow someone to spend your money.");
         cm.close();
         cm.open("Console");
         Scanner s=new Scanner(System.in);
         while(true){
-            cm.cont("Ready!");
             String st=s.nextLine();
             if(st.equals("allowToMint")){
                 cm.cont("Write an address of a new minter.");
@@ -87,7 +87,7 @@ public class TokenConfig {
                 cm.cont("OK!");
                 st="nothing";
             }
-            if(st.equals("")){
+            if(st.equals("quit")){
                 cm.cont("Bye-bye!");
                 cm.close();
                 return;
