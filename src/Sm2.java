@@ -2,6 +2,8 @@ import org.web3j.abi.EventEncoder;
 import org.web3j.abi.FunctionEncoder;
 import org.web3j.abi.TypeReference;
 import org.web3j.abi.datatypes.*;
+import org.web3j.abi.datatypes.generated.Bytes32;
+import org.web3j.abi.datatypes.generated.Uint8;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.DefaultBlockParameter;
@@ -102,13 +104,32 @@ public class Sm2 extends Contract {
                 new DynamicBytes(_data),
                 new org.web3j.abi.datatypes.generated.Bytes32(_trhhash),
                 new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.generated.Uint8>(
-                        org.web3j.abi.Utils.typeMap(_v, org.web3j.abi.datatypes.generated.Uint8.class)),
+                        uint8tMap(_v)),
                 new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.generated.Bytes32>(
-                        org.web3j.abi.Utils.typeMap(_r, org.web3j.abi.datatypes.generated.Bytes32.class)),
+                        bytes32tMap(_r)),
                 new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.generated.Bytes32>(
-                        org.web3j.abi.Utils.typeMap(_s, org.web3j.abi.datatypes.generated.Bytes32.class))),
+                        bytes32tMap(_s))),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
+    }
+
+    private List<Bytes32> bytes32tMap(List s) {
+        List<Bytes32> res=new ArrayList<>();
+        for (Object t:s) {
+            Bytes32 bytes= (Bytes32) t;
+            res.add(bytes);
+        }
+        return res;
+    }
+
+    private List<Uint8> uint8tMap(List v) {
+        List<Uint8> res=new ArrayList<>();
+        for (int i = 0; i < v.size(); i++) {
+            Uint8 uint= (Uint8) v.get(i);
+            res.add(uint);
+            //System.out.println(v.get(i));
+        }
+        return res;
     }
 
     public static RemoteCall<Sm2> deploy(Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit, List<String> volidators, BigInteger _num) {
