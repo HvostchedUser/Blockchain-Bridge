@@ -54,6 +54,7 @@ public class TokenConfig {
         cm.open("Tips");
         cm.cont("Write \"allowToMint\" to add a minter or");
         cm.cont("\"allowToBurn\" to add a burner or");
+        cm.cont("\"adminize\" to add a burner and a minter or");
         cm.cont("\"quit\" to exit or");
         cm.cont("\"allowToSpend\" to allow someone to spend your money.");
         cm.close();
@@ -66,6 +67,15 @@ public class TokenConfig {
                 st=s.nextLine();
                 cm.cont("Transacting...");
                 cm.cont("Transaction receipt",tokenin.setPermitionToMint(st).send());
+                cm.cont("OK!");
+                st="nothing";
+            }
+            if(st.equals("adminize")){
+                cm.cont("Write an address of a new minter and burner.");
+                st=s.nextLine();
+                cm.cont("Transacting...");
+                cm.cont("Transaction receipt for minting",tokenin.setPermitionToMint(st).send());
+                cm.cont("Transaction receipt for burning",tokenin.setPermitionToBurn(st).send());
                 cm.cont("OK!");
                 st="nothing";
             }
