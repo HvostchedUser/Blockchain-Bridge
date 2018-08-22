@@ -18,6 +18,7 @@ import java.util.List;
  */
 public class firstRun {
     public static void main(String[] args) throws Exception {
+
         ConsoleMessager cm=new ConsoleMessager();
         cm.open("Loading");
         cm.cont("Reading the configuration file...");
@@ -29,10 +30,8 @@ public class firstRun {
         cm.cont("Generating keys...");
 
 
-        String sm1addr=gc.get("sm1addr");
-        String sm2addr=gc.get("sm2addr");
-        String ethaddr=gc.get("ethaddr");
-        String cheapaddr=gc.get("cheapaddr");
+        //String sm1addr="0x16039e45f59c46507ba4c1c8a40e829af281256a";
+        //String sm2addr="0x1286470032cc2729774f5cf966770b450825f104";
 
 
         String privkey=gc.get("privkey");
@@ -48,40 +47,37 @@ public class firstRun {
         pubkey=sPublickeyInHex;
 
 
-
-
+        //aux1 adminize
+        //aux1/2 send erc20addrs
         cm.cont("Loading the wallet...");
         Credentials credentials = Credentials.create(privkey,pubkey);
-
+        cm.cont("My address",credentials.getAddress());
+        cm.cont("Ready!");
         cm.cont("Loading smart contract interfaces...(1/4)");
-        Sm1 sm1= Sm1.load(sm1addr,web3c,credentials,big(10),big(8000000));
+        Aux1 aux1= Aux1.load(gc.get("aux1addr"),web3c,credentials,big(10),big(8000000));
         cm.cont("Loading smart contract interfaces...(2/4)");
-        Sm2 sm2= Sm2.load(sm2addr,web3e,credentials,big(10),big(8000000));
+        Aux2 aux2=Aux2.load(gc.get("aux2addr"),web3e,credentials,big(10),big(8000000));
         cm.cont("Loading smart contract interfaces...(3/4)");
-        Cheap cheap= Cheap.load(cheapaddr,web3c,credentials,big(10),big(8000000));
+        Tokenin tokenin= Tokenin.load(gc.get("tokeninaddr"),web3c,credentials,big(10),big(8000000));
         cm.cont("Loading smart contract interfaces...(4/4)");
-        Eth eth= Eth.load(ethaddr,web3e,credentials,big(10),big(8000000));
+        Tokes tokes= Tokes.load(gc.get("tokesaddr"),web3e,credentials,big(10),big(8000000));
         cm.close();
-        cm.open("Check");
-        cm.cont("Checking the listener...(1/2)");
-        //int oldl=updateEvents(web3,sm1,sm1addr).size()-1;
-        cm.cont("Checking the listener...(2/2)");
-        cm.cont("Event listening begins!");
+        cm.open("Setup");
+        cm.cont("Adminize aux1...");
+        cm.cont("Transacting...");
+        cm.cont("Aux1 is now a professional tokenin minter! Prove",tokenin.setPermitionToMint(gc.get("aux1addr")).send());
+        cm.cont("Aux1 is now a professional tokenin burner! Prove",tokenin.setPermitionToBurn(gc.get("aux1addr")).send());
+        cm.cont("Aux1 has permissions to mint and burn tokens");
+        cm.cont("Informate aux1 and aux2 about tokenin and tokes and everything else...");
+        cm.cont("Aux2 knows where sm2 is! Transaction receipt",aux2.setSm1(gc.get("sm2addr")).send());
+        cm.cont("Aux2 knows where tokes are stored! Transaction receipt",aux2.setErc20(gc.get("tokesaddr")).send());
+        cm.cont("Aux2 has found his brother, Aux1! Transaction receipt",aux2.setAux(gc.get("aux1addr")).send());
+        cm.cont("Aux1 knows where sm1 is! Transaction receipt",aux1.setSm1(gc.get("sm1addr")).send());
+        cm.cont("Aux1 knows where tokenins are stored! Transaction receipt",aux1.setErc20(gc.get("tokeninaddr")).send());
+        cm.cont("Aux1 has found his brother, Aux2! Transaction receipt",aux1.setAux(gc.get("aux2addr")).send());
+        cm.cont("Everything is ok, bye!");
         cm.close();
-        cm.open("First run initalizing");
-        cm.cont("Writing eth address to cheap...");
-        cm.cont("Transaction receipt",cheap.getAddress(ethaddr).send().toString());
-        cm.cont("Writing cheap address to eth...");
-        cm.cont("Transaction receipt",eth.getAddress(cheapaddr).send().toString());
-        cm.close();
-        cm.open("Information");
-        cm.cont("Running the configer...");
-        cm.close();
-        Configer.main(new String[]{});
-        cm.open("Information");
-        cm.cont("Running the bridge...");
-        cm.close();
-        project3.main(new String[]{});
+
     }
 
 

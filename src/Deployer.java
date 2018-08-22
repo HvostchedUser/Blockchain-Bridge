@@ -92,10 +92,10 @@ public class Deployer {
         cm.cont("Bye-bye!");
         cm.close();
         gc.save();
-        //cm.open("Information");
-        //cm.cont("Running the firstRun program...");
-        //cm.close();
-        //firstRun.main(new String []{});
+        cm.open("Information");
+        cm.cont("Running the firstRun program...");
+        cm.close();
+        firstRun.main(new String []{});
 
     }
 
