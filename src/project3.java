@@ -54,9 +54,9 @@ public class project3 {
         Credentials credentials = Credentials.create(privkey,pubkey);
 
         cm.cont("Loading smart contract interfaces...(1/2)");
-        Sm1 sm1= Sm1.load(sm1addr,web3c,credentials,big(100),big(8000000));
+        Sm1 sm1= Sm1.load(sm1addr,web3c,credentials,big(1000),big(8000000));
         cm.cont("Loading smart contract interfaces...(2/2)");
-        Sm2 sm2= Sm2.load(sm2addr,web3e,credentials,big(100),big(8000000));
+        Sm2 sm2= Sm2.load(sm2addr,web3e,credentials,big(1000),big(8000000));
         //cm.cont("Loading smart contract interfaces...(3/4)");
         //Cheap cheap= Cheap.load(cheapaddr,web3c,credentials,big(10),big(8000000));
         //cm.cont("Loading smart contract interfaces...(4/4)");
@@ -139,7 +139,7 @@ public class project3 {
                 try {
                     goodl=updateEvents1good(web3c,sm1,sm1.getContractAddress()).size();
                     faill=updateEvents1fail(web3c,sm1,sm1.getContractAddress()).size();
-                    rtpm1l = updateEvents2rtpm(web3c,sm2,sm2.getContractAddress()).size();
+                    rtpm1l = updateEvents2rtpm(web3c,sm2,sm2.getContractAddress()).size()-1;
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
