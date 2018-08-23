@@ -49,9 +49,9 @@ public class TokenConfig {
 
         cm.open("Loading");
         cm.cont("Loading erc1...");
-        ERC_1 erc1 = ERC_1.load(gc.get("erc1addr"),web3c,credentials,big(10),big(2000000));
+        ERC_1 erc1 = ERC_1.load(gc.get("erc1addr"),web3c,credentials,big(1000),big(2000000));
         cm.cont("Loading erc2...");
-        ERC_2 erc2 = ERC_2.load(gc.get("erc2addr"),web3e,credentials,big(10),big(2000000));
+        ERC_2 erc2 = ERC_2.load(gc.get("erc2addr"),web3e,credentials,big(1000),big(2000000));
         cm.close();
         cm.open("Tips");
         cm.cont("Write \"allowToMint\" to add a minter or");

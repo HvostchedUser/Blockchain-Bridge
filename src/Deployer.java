@@ -50,26 +50,26 @@ public class Deployer {
         cm.open("Deploy");
         cm.cont("Deployment begins!");
         cm.cont("Deploying ERC_2 to expensivenet...(1/6)");
-        ERC_2 erc2 = ERC_2.deploy(web3e,credentials,big(10),big(2000000),big(500)).send();
+        ERC_2 erc2 = ERC_2.deploy(web3e,credentials,big(1000),big(2000000),big(500)).send();
         cm.cont("ERC_2 address",erc2.getContractAddress());
         cm.cont("Deploying sm1 to cheapnet...(2/6)");
         List<String> validators1=new ArrayList<>();
         validators1.add("0x7b4b4d811cb805f936854bf9ea30e6b3b69ddb11");
-        Sm1 sm1 = Sm1.deploy(web3c,credentials,big(10),big(2000000),validators1,big(1)).send();
+        Sm1 sm1 = Sm1.deploy(web3c,credentials,big(1000),big(2000000),validators1,big(1)).send();
         cm.cont("sm1 address",sm1.getContractAddress());
         cm.cont("Deploying sm2 to expensivenet...(3/6)");
         List<String> validators2=new ArrayList<>();
         validators2.add("0x7b4b4d811cb805f936854bf9ea30e6b3b69ddb11");
-        Sm2 sm2 = Sm2.deploy(web3e,credentials,big(10),big(2000000),validators2,big(1)).send();
+        Sm2 sm2 = Sm2.deploy(web3e,credentials,big(1000),big(2000000),validators2,big(1)).send();
         cm.cont("sm2 address",sm2.getContractAddress());
         cm.cont("Deploying ERC_1 to cheapnet...(4/6)");
-        ERC_1 erc1 = ERC_1.deploy(web3c,credentials,big(10),big(2000000)).send();
+        ERC_1 erc1 = ERC_1.deploy(web3c,credentials,big(1000),big(2000000)).send();
         cm.cont("ERC_1 address",erc1.getContractAddress());
         cm.cont("Deploying Aux1 to cheapnet...(5/6)");
-        Aux1 aux1= Aux1.deploy(web3c,credentials,big(10),big(2000000)).send();
+        Aux1 aux1= Aux1.deploy(web3c,credentials,big(1000),big(2000000)).send();
         cm.cont("Aux1 address",aux1.getContractAddress());
         cm.cont("Deploying Aux2 to expensivenet...(6/6)");
-        Aux2 aux2= Aux2.deploy(web3e,credentials,big(10),big(2000000)).send();
+        Aux2 aux2= Aux2.deploy(web3e,credentials,big(1000),big(2000000)).send();
         cm.cont("Aux2 address",aux2.getContractAddress());
         cm.cont("OK!");
         cm.close();
@@ -92,9 +92,9 @@ public class Deployer {
         cm.cont("Bye-bye!");
         cm.close();
         gc.save();
-        cm.open("Information");
-        cm.cont("Running the firstRun program...");
-        cm.close();
+        //cm.open("Information");
+        //cm.cont("Running the firstRun program...");
+        //cm.close();
         //firstRun.main(new String []{});
 
     }

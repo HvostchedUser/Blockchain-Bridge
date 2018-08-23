@@ -54,13 +54,13 @@ public class firstRun {
         cm.cont("My address",credentials.getAddress());
         cm.cont("Ready!");
         cm.cont("Loading smart contract interfaces...(1/4)");
-        Aux1 aux1= Aux1.load(gc.get("aux1addr"),web3c,credentials,big(10),big(8000000));
+        Aux1 aux1= Aux1.load(gc.get("aux1addr"),web3c,credentials,big(1000),big(8000000));
         cm.cont("Loading smart contract interfaces...(2/4)");
-        Aux2 aux2=Aux2.load(gc.get("aux2addr"),web3e,credentials,big(10),big(8000000));
+        Aux2 aux2=Aux2.load(gc.get("aux2addr"),web3e,credentials,big(1000),big(8000000));
         cm.cont("Loading smart contract interfaces...(3/4)");
-        ERC_1 erc1= ERC_1.load(gc.get("erc1addr"),web3c,credentials,big(10),big(8000000));
+        ERC_1 erc1= ERC_1.load(gc.get("erc1addr"),web3c,credentials,big(1000),big(8000000));
         cm.cont("Loading smart contract interfaces...(4/4)");
-        ERC_2 erc2= ERC_2.load(gc.get("erc2addr"),web3e,credentials,big(10),big(8000000));
+        ERC_2 erc2= ERC_2.load(gc.get("erc2addr"),web3e,credentials,big(1000),big(8000000));
         cm.close();
         cm.open("Setup");
         cm.cont("Adminize aux1...");

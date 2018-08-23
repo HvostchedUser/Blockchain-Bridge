@@ -54,9 +54,9 @@ public class Configer {
         Credentials credentials = Credentials.create(privkey,pubkey);
 
         cm.cont("Loading smart contract interfaces...(1/2)");
-        Sm1 sm1= Sm1.load(sm1addr,web3c,credentials,big(10),big(8000000));
+        Sm1 sm1= Sm1.load(sm1addr,web3c,credentials,big(1000),big(8000000));
         cm.cont("Loading smart contract interfaces...(2/2)");
-        Sm2 sm2= Sm2.load(sm2addr,web3e,credentials,big(10),big(8000000));
+        Sm2 sm2= Sm2.load(sm2addr,web3e,credentials,big(1000),big(8000000));
 //        cm.cont("Loading smart contract interfaces...(3/4)");
 //        Cheap cheap= Cheap.load(cheapaddr,web3c,credentials,big(2),big(8000000));
 //        cm.cont("Loading smart contract interfaces...(4/4)");
