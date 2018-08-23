@@ -32,8 +32,8 @@ public class Configer {
 
         String sm1addr=gc.get("sm1addr");
         String sm2addr=gc.get("sm2addr");
-        String ethaddr=gc.get("ethaddr");
-        String cheapaddr=gc.get("cheapaddr");
+        //String ethaddr=gc.get("ethaddr");
+        //String cheapaddr=gc.get("cheapaddr");
 
 
         String privkey=gc.get("privkey");
