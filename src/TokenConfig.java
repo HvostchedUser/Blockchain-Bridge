@@ -48,18 +48,18 @@ public class TokenConfig {
         cm.close();
 
         cm.open("Loading");
-        cm.cont("Loading tokenin...");
-        Tokenin tokenin = Tokenin.load(gc.get("tokeninaddr"),web3c,credentials,big(10),big(2000000));
-        cm.cont("Loading tokes...");
-        Tokes tokes = Tokes.load(gc.get("tokesaddr"),web3e,credentials,big(10),big(2000000));
+        cm.cont("Loading erc1...");
+        ERC_1 erc1 = ERC_1.load(gc.get("erc1addr"),web3c,credentials,big(10),big(2000000));
+        cm.cont("Loading erc2...");
+        ERC_2 erc2 = ERC_2.load(gc.get("erc2addr"),web3e,credentials,big(10),big(2000000));
         cm.close();
         cm.open("Tips");
         cm.cont("Write \"allowToMint\" to add a minter or");
         cm.cont("\"allowToBurn\" to add a burner or");
         cm.cont("\"adminize\" to add a burner and a minter or");
         cm.cont("\"quit\" to exit or");
-        cm.cont("\"tokesAllowToSpend\" to allow someone to spend your money in tokes.");
-        cm.cont("\"tokeninAllowToSpend\" to allow someone to spend your money in tokenin.");
+        cm.cont("\"erc2AllowToSpend\" to allow someone to spend your money in erc2.");
+        cm.cont("\"erc1AllowToSpend\" to allow someone to spend your money in erc1.");
         cm.close();
         cm.open("Console");
         Scanner s=new Scanner(System.in);
@@ -69,7 +69,7 @@ public class TokenConfig {
                 cm.cont("Write an address of a new minter.");
                 st=s.nextLine();
                 cm.cont("Transacting...");
-                cm.cont("Transaction receipt",tokenin.setPermitionToMint(st).send());
+                cm.cont("Transaction receipt",erc1.setPermitionToMint(st).send());
                 cm.cont("OK!");
                 st="nothing";
             }
@@ -77,8 +77,8 @@ public class TokenConfig {
                 cm.cont("Write an address of a new minter and burner.");
                 st=s.nextLine();
                 cm.cont("Transacting...");
-                cm.cont("Transaction receipt for minting",tokenin.setPermitionToMint(st).send());
-                cm.cont("Transaction receipt for burning",tokenin.setPermitionToBurn(st).send());
+                cm.cont("Transaction receipt for minting",erc1.setPermitionToMint(st).send());
+                cm.cont("Transaction receipt for burning",erc1.setPermitionToBurn(st).send());
                 cm.cont("OK!");
                 st="nothing";
             }
@@ -86,27 +86,27 @@ public class TokenConfig {
                 cm.cont("Write an address of a new burner.");
                 st=s.nextLine();
                 cm.cont("Transacting...");
-                cm.cont("Transaction receipt",tokenin.setPermitionToBurn(st).send());
+                cm.cont("Transaction receipt",erc1.setPermitionToBurn(st).send());
                 cm.cont("OK!");
                 st="nothing";
             }
-            if(st.equals("tokeninAllowToSpend")){
-                cm.cont("Write an address of a spender in tokenin.");
+            if(st.equals("erc1AllowToSpend")){
+                cm.cont("Write an address of a spender in erc1.");
                 st=s.nextLine();
                 cm.cont("How much tokens?");
                 BigInteger bi=s.nextBigInteger();
                 cm.cont("Transacting...");
-                cm.cont("Transaction receipt",tokenin.approve(st,bi).send());
+                cm.cont("Transaction receipt",erc1.approve(st,bi).send());
                 cm.cont("OK!");
                 st="nothing";
             }
-            if(st.equals("tokesAllowToSpend")){
-                cm.cont("Write an address of a spender in tokes.");
+            if(st.equals("erc2AllowToSpend")){
+                cm.cont("Write an address of a spender in erc2.");
                 st=s.nextLine();
                 cm.cont("How much tokens?");
                 BigInteger bi=s.nextBigInteger();
                 cm.cont("Transacting...");
-                cm.cont("Transaction receipt",tokes.approve(st,bi).send());
+                cm.cont("Transaction receipt",erc2.approve(st,bi).send());
                 cm.cont("OK!");
                 st="nothing";
             }
