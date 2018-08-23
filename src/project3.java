@@ -90,7 +90,7 @@ public class project3 {
                         if (pasMes1.size() > rtpm1l) {
                             cm.open("Event response");
                             cm.cont("Got event from SM1, request to sign the message.");
-                            rtpm1l = pasMes1.size();
+                            rtpm1l += 1;//pasMes1.size();
                             RTPMSM1 rm1;
                             rm1 = pasMes1.get(rtpm1l - 1);
                             cm.cont("Address",rm1.addr);
@@ -110,7 +110,7 @@ public class project3 {
                         if ( pasVRS1.size() > rtpVRS1l) {
                             cm.open("Event response");
                             cm.cont("Got event from SM1, request to pass V, R and S.");
-                            rtpVRS1l = pasVRS1.size();
+                            rtpVRS1l += 1;//pasVRS1.size();
                             RTPVRSSM1 rvrs1;
                             rvrs1 = pasVRS1.get(rtpVRS1l - 1);
                             cm.cont("Address",rvrs1.addr);
@@ -150,7 +150,7 @@ public class project3 {
                         List<Sm1.MessagePassFailEventResponse> err=updateEvents1fail(web3c,sm1,sm1.getContractAddress());
                         List<Sm1.MessageSucessfulPassedEventResponse> good=updateEvents1good(web3c,sm1,sm1.getContractAddress());
                         if(err.size()>faill){
-                            faill=err.size();
+                            faill+=1;//err.size();
                             cm.open("Error response");
                             cm.cont("Error by sm1: cannot send message!");
                             cm.cont("_to",err.get(err.size()-1).to);
@@ -158,7 +158,7 @@ public class project3 {
                             cm.close();
                         }
                         if(good.size()>goodl){
-                            goodl=good.size();
+                            goodl+=1;//good.size();
                             cm.open("Success event response");
                             cm.cont("Error by sm1: message successfully sent!");
                             cm.cont("_to",good.get(good.size()-1).to);
@@ -168,7 +168,7 @@ public class project3 {
                         if (pasMes1.size() > rtpm1l) {
                             cm.open("Event response");
                             cm.cont("Got event from SM2, request to pass the message.");
-                            rtpm1l = pasMes1.size();
+                            rtpm1l += 1;//pasMes1.size();
                             RTPMSM1 rm1;
                             rm1 = pasMes1.get(rtpm1l - 1);
                             cm.cont("Address",rm1.addr);
