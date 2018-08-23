@@ -95,7 +95,7 @@ public class Deployer {
         cm.open("Information");
         cm.cont("Running the firstRun program...");
         cm.close();
-        firstRun.main(new String []{});
+        //firstRun.main(new String []{});
 
     }
 

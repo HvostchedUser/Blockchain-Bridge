@@ -66,11 +66,11 @@ public class firstRun {
         cm.cont("Adminize aux1...");
         cm.cont("Transacting...");
         cm.cont("Aux1 is now a professional erc1 minter! Prove",erc1.setPermitionToMint(gc.get("aux1addr")).send());
-        cm.cont("Aux1 is now a professional erc1 burner! Prove",erc1.setPermitionToBurn(gc.get("aux1addr")).send());
+        cm.cont("Aux1 is now an angry erc1 burner! Prove",erc1.setPermitionToBurn(gc.get("aux1addr")).send());
         cm.cont("Aux1 has permissions to mint and burn tokens");
         cm.cont("Informate aux1 and aux2 about erc1 and erc2 and everything else...");
         cm.cont("Aux2 knows where sm2 is! Transaction receipt",aux2.setSm1(gc.get("sm2addr")).send());
-        cm.cont("Aux2 knows where erc2 are stored! Transaction receipt",aux2.setErc20(gc.get("erc2addr")).send());
+        cm.cont("Aux2 knows where erc2s are stored! Transaction receipt",aux2.setErc20(gc.get("erc2addr")).send());
         cm.cont("Aux2 has found his brother, Aux1! Transaction receipt",aux2.setAux(gc.get("aux1addr")).send());
         cm.cont("Aux1 knows where sm1 is! Transaction receipt",aux1.setSm1(gc.get("sm1addr")).send());
         cm.cont("Aux1 knows where erc1s are stored! Transaction receipt",aux1.setErc20(gc.get("erc1addr")).send());
