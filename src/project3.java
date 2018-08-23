@@ -139,7 +139,7 @@ public class project3 {
                 try {
                     goodl=updateEvents1good(web3c,sm1,sm1.getContractAddress()).size();
                     faill=updateEvents1fail(web3c,sm1,sm1.getContractAddress()).size();
-                    rtpm1l = updateEvents2rtpm(web3c,sm2,sm2.getContractAddress()).size()-1;
+                    rtpm1l = updateEvents2rtpm(web3c,sm2,sm2.getContractAddress()).size();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
