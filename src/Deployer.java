@@ -50,7 +50,7 @@ public class Deployer {
         cm.open("Deploy");
         cm.cont("Deployment begins!");
         cm.cont("Deploying ERC_2 to expensivenet...(1/6)");
-        ERC_2 erc2 = ERC_2.deploy(web3e,credentials,big(10),big(2000000),big(1000000)).send();
+        ERC_2 erc2 = ERC_2.deploy(web3e,credentials,big(10),big(2000000),big(500)).send();
         cm.cont("ERC_2 address",erc2.getContractAddress());
         cm.cont("Deploying sm1 to cheapnet...(2/6)");
         List<String> validators1=new ArrayList<>();
